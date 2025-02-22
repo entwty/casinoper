@@ -1,0 +1,59 @@
+.footer {
+    background-color: black;
+    color: white;
+    padding: 20px;
+    text-align: center;
+
+    .provider-container {
+        h2 {
+            margin: 20px 0;
+            font-size: 24px;
+        }
+
+        .payment-providers, .game-providers {
+            margin: 0 auto;
+            img {
+                max-width: 100%;
+                height: auto;
+            }
+        }
+    }
+
+    .footer-links {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+
+        .footer-column {
+            margin: 20px;
+            flex: 1 1 200px;
+            h3 {
+                margin-bottom: 10px;
+                font-size: 18px;
+            }
+            ul {
+                list-style: none;
+                padding: 0;
+            }
+        }
+    }
+
+    .language-switch {
+        img {
+            width: 50px;
+            margin: 0 5px;
+        }
+    }
+
+    .license-info {
+        margin-top: 20px;
+        p {
+            margin: 5px 0;
+            font-size: 14px;
+        }
+        img {
+            width: 90px;
+            margin: 0 5px;
+        }
+    }
+}

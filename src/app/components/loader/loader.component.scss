@@ -1,0 +1,67 @@
+#firstLoader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(0.29turn, rgb(70, 70, 70), rgb(0, 0, 0), rgb(111, 254, 188));
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
+
+  &.hidden {
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  .loader-logo {
+    position: relative;
+    width: 22rem; /* Logo SVG için geniş alan */
+    height: 22rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    .logo-svg {
+      width: 16rem; /* Logo boyutunu doğru ayarla */
+      height: auto;
+    }
+
+    .heartbeat-svg {
+      width: 16rem; /* SVG genişliği */
+      height: auto;
+      margin-top: 1rem;
+
+      /* Yalnızca kalp öğesini hareket ettir */
+      .heartbeat-path {
+        animation: heartbeat 1.5s infinite;
+      }
+    }
+  }
+}
+
+@keyframes heartbeat {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+@media (max-width: 768px) {
+  .loader-logo {
+    .logo-svg {
+      width: 8rem; /* Mobilde daha küçük logo */
+    }
+
+    .heartbeat-svg {
+      width: 5rem; /* Mobilde daha küçük SVG */
+    }
+  }
+}

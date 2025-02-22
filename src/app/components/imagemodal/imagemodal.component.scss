@@ -1,0 +1,38 @@
+.modal {
+    display: block; // Show the modal
+    position: fixed; // Stay in place
+    z-index: 999; // Sit on top
+    left: 0;
+    top: 0;
+    width: 100%; // Full width
+    height: 100%; // Full height
+    overflow: auto; // Enable scroll if needed
+    background-color: rgba(0, 0, 0, 0.7); // Black background with opacity
+    background-image: url('https://percas.s3.eu-west-2.amazonaws.com/cpp/popup/popup_bg.jpg'); // Background image
+    background-size: cover; // Cover the modal
+  }
+  
+  .modal-content {
+    background-color: rgba(255, 255, 255, 0.9); // Light background for content
+    margin: 15% auto; // 15% from the top and centered
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; // Width of the modal content
+    border-radius: 10px; // Rounded corners
+  }
+  
+  .close {
+    color: red; // Close button color
+    float: right; // Position on the right side
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer; // Pointer cursor for closable button
+  }
+  
+  h2 {
+    color: #ff0000; // Red color for header
+  }
+  
+  p {
+    color: #000; // Black color for paragraphs
+  }

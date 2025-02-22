@@ -1,0 +1,154 @@
+/* Header Genel Stili */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10;
+  background-color: rgba(0, 0, 0, 0); /* Şeffaf arka plan */
+  transition: background-color 0.3s ease;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+}
+
+/* Scroll Durumunda Header */
+.header.scrolled {
+  background-color: #000; /* Scroll olduğunda arka plan siyah olacak */
+}
+
+/* Navbar Genel Stili */
+.navbar {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Solda hamburger ve logo, sağda butonlar */
+}
+
+/* Hamburger Menü */
+.navbar-toggler {
+  border: none;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  background-color: transparent; /* Arka planı şeffaf yap */
+}
+
+/* Hamburger Menüye Tıklandığında Border Oluşmasını Engelle */
+.navbar-toggler:focus {
+  outline: none; /* Odaklandığında border oluşmasını engelle */
+  box-shadow: none; /* Odaklandığında gölge oluşmasını engelle */
+}
+
+/* Hamburger Çizgileri */
+.navbar-toggler-icon {
+  position: relative;
+  display: block;
+  width: 30px;
+  height: 3px;
+  background-color: #fff; /* Çizgiler tamamen beyaz */
+  transition: transform 0.5s ease, background-color 0.3s ease;
+}
+
+.navbar-toggler-icon::before,
+.navbar-toggler-icon::after {
+  content: '';
+  position: absolute;
+  width: 30px;
+  height: 3px;
+  background-color: #fff; /* Tamamen beyaz çizgiler */
+  transition: transform 0.5s ease, background-color 0.3s ease;
+}
+
+.navbar-toggler-icon::before {
+  top: -8px; /* Çizgiler merkezde */
+  transform-origin: center; /* Dönüş merkezini ayarla */
+}
+
+.navbar-toggler-icon::after {
+  top: 8px; /* Çizgiler merkezde */
+  transform-origin: center; /* Dönüş merkezini ayarla */
+}
+
+/* Hamburger Menüye Hover Edildiğinde Animasyon */
+.navbar-toggler:hover .navbar-toggler-icon,
+.navbar-toggler:hover .navbar-toggler-icon::before,
+.navbar-toggler:hover .navbar-toggler-icon::after {
+  transform: rotate(-360deg); /* Daire çizer gibi döner */
+}
+
+/* Logo */
+.logo {
+  width: 150px;
+  height: auto;
+  margin-left: 10px; /* Soldan biraz boşluk */
+  transition: width 0.3s ease, height 0.3s ease;
+}
+
+/* Giriş ve Kayıt Ol Butonları */
+.auth-buttons {
+  display: flex;
+  gap: 20px; /* Butonlar arasında boşluk */
+}
+
+.auth-buttons .btn {
+  color: #fff;
+  border: 1px solid #fff;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.auth-buttons .btn:hover {
+  background-color: #ff5733; /* Buton hover rengi */
+  border-color: #ff5733;
+  color: #fff;
+}
+
+/* Kullanıcı Bilgileri */
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.username {
+  font-weight: bold;
+}
+
+.balance {
+  color: #ff5733; /* Bakiye rengi */
+}
+
+/* Responsive Ayarları */
+@media (max-width: 991px) {
+  .logo {
+    width: 120px; /* Mobilde logo boyutu küçültülüyor */
+  }
+
+  .auth-buttons .btn {
+    font-size: 12px; /* Mobilde buton yazı boyutu küçültülüyor */
+    padding: 5px 10px;
+  }
+
+  .navbar-toggler {
+    width: 35px; /* Mobilde hamburger menü boyutu küçültülüyor */
+    height: 35px;
+  }
+
+  .navbar-toggler-icon {
+    width: 25px; /* Mobilde hamburger çizgileri boyutu küçültülüyor */
+    height: 2px;
+  }
+
+  .navbar-toggler-icon::before {
+    top: -6px; /* Mobilde çizgilerin pozisyonu ayarlanıyor */
+  }
+
+  .navbar-toggler-icon::after {
+    top: 6px; /* Mobilde çizgilerin pozisyonu ayarlanıyor */
+  }
+}

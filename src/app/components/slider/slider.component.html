@@ -1,0 +1,16 @@
+<div class="slider-container">
+  <ngb-carousel [interval]="5000" [pauseOnHover]="true" [wrap]="true">
+    <ng-template ngbSlide *ngFor="let slide of slides; let i = index">
+      <div 
+        class="slide" 
+        [style.backgroundImage]="'url(' + slide.image + ')'"
+        [attr.aria-label]="'Slide ' + (i + 1)"
+        role="img"> <!-- role eklenebilir -->
+        <div class="buttons">
+          <button class="play-now">{{ slide.button1 }}</button>
+          <button class="details">{{ slide.button2 }}</button>
+        </div>
+      </div>
+    </ng-template>
+  </ngb-carousel>
+</div>

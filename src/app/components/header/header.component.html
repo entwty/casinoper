@@ -1,0 +1,41 @@
+<header [class.scrolled]="isScrolled" class="header">
+  <nav class="navbar navbar-expand-lg">
+    <div class="container-fluid d-flex align-items-center">
+      
+      <!-- SOLDA: Hamburger Menü + Logo -->
+      <div class="d-flex align-items-center">
+        <button 
+          class="navbar-toggler custom-toggler" 
+          type="button" 
+          (click)="toggleSidebar()" 
+          aria-controls="navbarNav" 
+          aria-expanded="false" 
+          aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <a class="navbar-brand" href="#">
+          <img src="assets/logo.png" alt="Logo" class="logo">
+        </a>
+      </div>
+
+      <!-- SAĞDA: Kullanıcı Durumuna Göre Butonlar -->
+      <div class="auth-buttons ms-auto">
+        <ng-container *ngIf="isLoggedIn; else guestButtons">
+          <div class="user-info">
+            <span class="username">{{ username }}</span>
+            <span class="balance">TRY {{ balance | number:'1.2-2' }}</span>
+          </div>
+          <button class="btn btn-outline-primary deposit">Para Yatır</button>
+        </ng-container>
+        
+        <!-- Misafir Kullanıcılar İçin Butonlar -->
+        <ng-template #guestButtons>
+          <button class="btn btn-outline-primary login">Giriş</button>
+          <button class="btn btn-outline-primary register">Kayıt Ol</button>
+        </ng-template>
+      </div>
+      
+    </div>
+  </nav>
+</header>

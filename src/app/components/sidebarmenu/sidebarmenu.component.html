@@ -1,0 +1,31 @@
+<!-- Sidebar Offcanvas -->
+<div class="offcanvas offcanvas-start sidebar-container" tabindex="-1" #sidebarMenu>
+    <div class="offcanvas-header">
+      <img src="assets/logo.png" alt="CASINOPER Logo" class="logo">
+      <button type="button" class="btn-close" (click)="toggleSidebar()"></button>
+    </div>
+  
+    <div class="offcanvas-body">
+      <ul class="menu-list">
+        <li><a href="#">ANA SAYFA</a></li>
+  
+        <!-- Kullanıcı Giriş Yaptıysa -->
+        <li *ngIf="isLoggedIn" class="username">
+          <i class="bi bi-person-circle"></i> {{ username }}
+        </li>
+        <li *ngIf="isLoggedIn"><a href="#">PARA YATIR</a></li>
+        <li *ngIf="isLoggedIn"><a href="#">PARA ÇEK</a></li>
+        <li><a href="#">PROMOSYONLAR</a></li>
+        <li><a href="#">HAKKIMIZDA</a></li>
+        <li><a href="#">CASINOPER APP</a></li>
+        <li><a href="#">CASINOPER TV</a></li>
+        <li><a href="#">VIP CLUB</a></li>
+  
+        <!-- Çıkış Yap Butonu -->
+        <li *ngIf="isLoggedIn">
+          <a href="#" class="logout">Çıkış <i class="bi bi-box-arrow-right"></i></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  

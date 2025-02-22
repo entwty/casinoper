@@ -1,0 +1,23 @@
+app-slider {
+    position: relative;
+    z-index: 5; /* Header'ın altında kalması için */
+    width: 100%;
+    height: 100vh; /* Slider yüksekliği ekranı kapsar */
+  }
+  
+  /* Slider img'lerinin yüksekliği */
+  app-slider img {
+    width: 100%;
+    height: 100vh; /* Resimler ekranı kapsayacak şekilde */
+    object-fit: cover; /* Resmin düzgün bir şekilde sığması */
+    transition: opacity 0.3s ease-in-out;
+  }
+
+  app-navlink {
+    background-color: #000; /* Siyah arka plan */
+    padding: 20px;
+    text-align: center;
+    color: #fff;
+    z-index: 15;
+    position: relative;
+  }
