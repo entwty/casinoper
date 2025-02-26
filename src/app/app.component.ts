@@ -5,7 +5,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { SliderComponent } from './components/slider/slider.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FooterComponent } from "./components/footer/footer.component";
-
+import { HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',

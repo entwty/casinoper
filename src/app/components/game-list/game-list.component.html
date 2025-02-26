@@ -1,0 +1,12 @@
+<div *ngIf="loading">
+    <p>Yükleniyor...</p>
+  </div>
+  
+  <div *ngIf="!loading">
+    <div class="game-grid">
+      <div *ngFor="let game of games" class="game-item" (click)="openGameUrl(game.url)">
+        <img [src]="game.thumb" [alt]="game.name" class="game-thumbnail">
+        <p>{{ game.name }}</p>
+      </div>
+    </div>
+  </div>

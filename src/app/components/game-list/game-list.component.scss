@@ -1,0 +1,22 @@
+.game-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 16px;
+    padding: 16px;
+  }
+  
+  .game-item {
+    cursor: pointer;
+    text-align: center;
+  }
+  
+  .game-thumbnail {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+  }
+  
+  .game-item p {
+    margin-top: 8px;
+    font-size: 14px;
+  }
