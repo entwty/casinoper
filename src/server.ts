@@ -5,6 +5,7 @@ import {
   writeResponseToNodeResponse,
 } from '@angular/ssr/node';
 import express from 'express';
+import axios from 'axios';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -14,30 +15,32 @@ const browserDistFolder = resolve(serverDistFolder, '../browser');
 const app = express();
 const angularApp = new AngularNodeAppEngine();
 
-// CSP Middleware'ini ekleyin
-app.use((req, res, next) => {
-  res.setHeader(
-    'Content-Security-Policy',
-    "default-src * 'unsafe-inline' 'unsafe-eval'; script-src * 'unsafe-inline' 'unsafe-eval'; frame-src *; connect-src *; img-src * data:;"
-  );
-  next();
-});
-/**
- * API Endpoint'leri
- * Örnek olarak /api/games endpoint'ini ekleyelim.
- */
-app.get('/api/games', async (req, res) => {
+
+
+// API Proxy Endpoint'i
+app.get('/api/proxy/games', async (req, res) => {
   try {
-    const response = await fetch('https://slotslaunch.com/api/games?token=ztZkBKlkIrbywe8gHTCCvV6vb2M1toitHBBXalbqYu5Tq5rqWS', {
+    const apiUrl = 'https://slotslaunch.com/api/games?token=ztZkBKlkIrbywe8gHTCCvV6vb2M1toitHBBXalbqYu5Tq5rqWS';
+    console.log('API isteği gönderiliyor:', apiUrl);
+
+    const response = await axios.get(apiUrl, {
       headers: {
         'Origin': 'casinoper845.com',
       },
+      timeout: 5000, // 5 saniye zaman aşımı
     });
-    const data = await response.json();
-    res.json(data);
+
+    console.log('API yanıtı:', response.data); // API yanıtını logla
+    res.json(response.data); // Yanıtı istemciye gönder
   } catch (error) {
     console.error('API isteği başarısız:', error);
-    res.status(500).json({ error: 'API isteği başarısız oldu.' });
+
+    // error'un bir Error nesnesi olup olmadığını kontrol et
+    if (error instanceof Error) {
+      res.status(500).json({ error: 'API isteği başarısız oldu.', details: error.message });
+    } else {
+      res.status(500).json({ error: 'API isteği başarısız oldu.', details: 'Bilinmeyen bir hata oluştu.' });
+    }
   }
 });
 
