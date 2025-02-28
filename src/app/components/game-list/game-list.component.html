@@ -1,12 +1,13 @@
 <div *ngIf="loading">
-    <p>Yükleniyor...</p>
-  </div>
-  
-  <div *ngIf="!loading">
-    <div class="game-grid">
-      <div *ngFor="let game of games" class="game-item" (click)="openGameUrl(game.url)">
-        <img [src]="game.thumb" [alt]="game.name" class="game-thumbnail">
-        <p>{{ game.name }}</p>
-      </div>
+  <p>Yükleniyor...</p>
+</div>
+
+<div *ngIf="!loading">
+  <div class="game-grid">
+    <div *ngFor="let game of games" class="game-item">
+      <img [src]="getSafeUrl(game.thumb)" [alt]="game.name" class="game-thumbnail">
+      <iframe *ngIf="game.url" [src]="getSafeUrl(game.url)" class="game-iframe"></iframe>
+      <p>{{ game.name }}</p>
     </div>
   </div>
+</div>

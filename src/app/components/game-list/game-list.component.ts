@@ -1,6 +1,7 @@
-import { Component , OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../../services/api.service';
 import { CommonModule } from '@angular/common';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-game-list',
@@ -8,12 +9,11 @@ import { CommonModule } from '@angular/common';
   templateUrl: './game-list.component.html',
   styleUrl: './game-list.component.scss'
 })
-
 export class GameListComponent implements OnInit {
   games: any[] = []; // Oyunları saklamak için dizi
   loading: boolean = true; // Yükleniyor durumu
 
-  constructor(private apiService: ApiService) {}
+  constructor(private apiService: ApiService, private sanitizer: DomSanitizer) {}
 
   ngOnInit(): void {
     this.apiService.getGames().subscribe(
@@ -28,8 +28,8 @@ export class GameListComponent implements OnInit {
     );
   }
 
-  // Oyunun URL'sini yeni sekmede aç
-  openGameUrl(url: string): void {
-    window.open(url, '_blank');
+  // Güvenli URL oluştur
+  getSafeUrl(url: string): SafeResourceUrl {
+    return this.sanitizer.bypassSecurityTrustResourceUrl(url);
   }
 }

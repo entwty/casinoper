@@ -19,7 +19,7 @@ export class ApiService {
 
     // Headers olarak Origin başlığını ekleyin
     const headers = new HttpHeaders({
-      'Origin': this.origin
+      'Origin': this.origin,
     });
 
     // API isteğini gönderin

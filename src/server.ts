@@ -14,17 +14,32 @@ const browserDistFolder = resolve(serverDistFolder, '../browser');
 const app = express();
 const angularApp = new AngularNodeAppEngine();
 
+// CSP Middleware'ini ekleyin
+app.use((req, res, next) => {
+  res.setHeader(
+    'Content-Security-Policy',
+    "default-src * 'unsafe-inline' 'unsafe-eval'; script-src * 'unsafe-inline' 'unsafe-eval'; frame-src *; connect-src *; img-src * data:;"
+  );
+  next();
+});
 /**
- * Example Express Rest API endpoints can be defined here.
- * Uncomment and define endpoints as necessary.
- *
- * Example:
- * ```ts
- * app.get('/api/**', (req, res) => {
- *   // Handle API request
- * });
- * ```
+ * API Endpoint'leri
+ * Örnek olarak /api/games endpoint'ini ekleyelim.
  */
+app.get('/api/games', async (req, res) => {
+  try {
+    const response = await fetch('https://slotslaunch.com/api/games?token=ztZkBKlkIrbywe8gHTCCvV6vb2M1toitHBBXalbqYu5Tq5rqWS', {
+      headers: {
+        'Origin': 'casinoper845.com',
+      },
+    });
+    const data = await response.json();
+    res.json(data);
+  } catch (error) {
+    console.error('API isteği başarısız:', error);
+    res.status(500).json({ error: 'API isteği başarısız oldu.' });
+  }
+});
 
 /**
  * Serve static files from /browser
