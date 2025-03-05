@@ -35,7 +35,6 @@
             "styles": [
               "src/styles.scss",
               "node_modules/bootstrap/dist/css/bootstrap.min.css"
-         
             ],
             "scripts": [
               "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
@@ -77,7 +76,6 @@
               "buildTarget": "casinoper:build:production"
             },
             "development": {
-              
               "buildTarget": "casinoper:build:development"
             }
           },
@@ -109,6 +107,17 @@
             "scripts": [
               "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
             ]
+          }
+        },
+        "e2e": {
+          "builder": "playwright-ng-schematics:playwright",
+          "options": {
+            "devServerTarget": "casinoper:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "casinoper:serve:production"
+            }
           }
         }
       }
