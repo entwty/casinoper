@@ -28,6 +28,7 @@ export class GameListComponent implements OnInit {
     );
   }
 
+
   // Güvenli URL oluştur
   getSafeUrl(url: string): SafeResourceUrl {
     return this.sanitizer.bypassSecurityTrustResourceUrl(url);
