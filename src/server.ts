@@ -16,19 +16,7 @@ const app = express();
 const angularApp = new AngularNodeAppEngine();
 
 
-app.use((req, res, next) => {
-  res.setHeader(
-    'Content-Security-Policy',
-    "default-src 'self'; " +
-    "script-src 'self' https://slotslaunch.com 'unsafe-inline' 'unsafe-eval'; " +
-    "style-src 'self' 'unsafe-inline'; " +
-    "img-src 'self' data: https://slotslaunch.nyc3.digitaloceanspaces.com https://percas.s3.eu-west-2.amazonaws.com https://verification.pagcor-regulatory.ph; " +
-    "font-src 'self'; " +
-    "connect-src 'self' https://casinoper845.com/api/proxy/games; " +
-    "frame-src 'self' https://slotslaunch.com;" // Burayı güncelle
-  );
-  next();
-});
+
 // API Proxy Endpoint'i
 app.get('/api/proxy/games', async (req, res) => {
   try {

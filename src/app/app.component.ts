@@ -6,11 +6,12 @@ import { SliderComponent } from './components/slider/slider.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FooterComponent } from "./components/footer/footer.component";
 import { HttpClientModule } from '@angular/common/http';
+import { GameListComponent } from './components/game-list/game-list.component';
 
 @Component({
   selector: 'app-root',
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  imports: [RouterOutlet, LoaderComponent, HeaderComponent, SliderComponent, NgbModule, FooterComponent],
+  imports: [RouterOutlet, LoaderComponent, HeaderComponent, SliderComponent, NgbModule, FooterComponent , GameListComponent],
 templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
